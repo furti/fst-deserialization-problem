@@ -145,3 +145,12 @@ java.lang.NullPointerException
 ```
 
 We can see here, that it fails at line 982 in the java.lang.String.equals method. Under normal circumstances it should be nearly impossible to fail at this location.
+
+## Additional findings (03.12.2018 09:10)
+
+After I added the description I looked over the console output again. And I found something interesting there.
+
+When we look at the wrong ```mc``` value of the ```PnetPortalUserEmploymentRight``` for the last session, we see that it contains a list of PnetPortalUserMenuItemCompany objects.
+But the same list of this two objects is already output for the previous session.
+
+It looks to me like fst is reusing already seen objects and this cache is not cleared correctly before each invocation.
