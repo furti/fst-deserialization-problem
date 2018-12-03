@@ -45,6 +45,8 @@ public class DeserializeSession
         try
         {
             String directory = reader.readLine();
+
+            // We use a Pair here so we can keep the file name next to the binary data 
             List<Pair<String, String>> base64Datas = readData(directory);
 
             // When the list is not reversed it works. So it does not depend on the data in the list but on the order the data is processed
